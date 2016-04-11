@@ -5,17 +5,16 @@ from models import Pages
 # Create your views here.
 def id (request , identificador ):
     try :
-        pg = Pages.objects.get(id = int(identificador)) #me muestra el id
-        pag = str(pg.page)
-        return HttpResponse ('<h1>Todo correcto<h2>')
+        pages = Pages.objects.get(id = int(identificador)) #me muestra el id
+        pag = str(pages.page)
+        return HttpResponse ('<h1>Todo correcto<h2>'+ str(pages))
     except Pages.DoesNotExist :
         respuesta = ("<h1>Error . No hay pagina para este identificador </h1>")
         return HttpResponse(respuesta)
 
-def recurso (request , recurso) :
+def recurs (request , recurso) :
     try :
-        pg = Pages.objects.get(name = recurso)
-        pag = str(pg.page)
-        return HttpResponse ('<h1>Todo correcto<h2>')
+        pages = Pages.objects.get(name = recurso)
+        return HttpResponse ('<h1>Todo correcto<h2> ' + str(name))
     except Pages.DoesNotExist :
         return HttpResponse ('Error . No hay pagina para el recurso introducido')
